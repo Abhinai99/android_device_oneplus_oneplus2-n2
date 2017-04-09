@@ -69,7 +69,7 @@ TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
-TARGET_KERNEL_CONFIG := du_oneplus2_defconfig
+TARGET_KERNEL_CONFIG := oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # QCOM hardware
@@ -103,7 +103,7 @@ BOARD_HAS_QCA_BT_ROME := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
-#QCOM_BT_USE_SMD_TTY := true
+QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -154,20 +154,14 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+#RIL
+TARGET_RIL_VARIANT := caf
+
 # RPC
 TARGET_NO_RPC := true
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
-
-# Enable dexpreopt to speed boot time
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-   endif
-  endif
-endif
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
